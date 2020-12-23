@@ -72,12 +72,15 @@ module.exports = function include_plugin(md, options) {
       // replace include by file content
       var isExist = fs.existsSync(filePath);
       if (isExist) {
+        console.info("CHIQ_1");
         mdSrc = fs.readFileSync(filePath, 'utf8');
         var queryString = app.queryString;
         if (queryString) {
           mdSrc = tplEngine(mdSrc, queryString);
         }
+        console.info(filePath);
         mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
+        console.info(mdSrc);
       }
       src = src.slice(0, cap.index) + mdSrc + src.slice(cap.index + cap[0].length, src.length);
 
