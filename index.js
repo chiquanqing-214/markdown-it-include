@@ -79,8 +79,7 @@ module.exports = function include_plugin(md, options) {
         }
         mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
       }
-      mdSrc = "CHIQ:" + filePath + mdSrc;
-      src = src.slice(0, cap.index) + mdSrc + src.slice(cap.index + cap[0].length, src.length);
+      src = "CHIQ_SOS" + src.slice(0, cap.index) + mdSrc + src.slice(cap.index + cap[0].length, src.length);
 
     }
     return src;
