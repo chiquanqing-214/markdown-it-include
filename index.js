@@ -50,6 +50,9 @@ module.exports = function include_plugin(md, options) {
     }
     return ret.join('');
   }
+  function appendBtn(mdSrc, filePath) {
+    return "> CHIQ_SOS1:" + filePath + " \r\n" + mdSrc;
+  }
 
   function _replaceIncludeByContent(src, rootdir, parentFilePath, filesProcessed) {
     filesProcessed = filesProcessed ? filesProcessed.slice() : []; // making a copy
@@ -79,7 +82,7 @@ module.exports = function include_plugin(md, options) {
         }
         mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
       }
-      src = "CHIQ_SOS" + src.slice(0, cap.index) + mdSrc + src.slice(cap.index + cap[0].length, src.length);
+      src = src.slice(0, cap.index) + appendBtn(mdSrc, filePath) + src.slice(cap.index + cap[0].length, src.length);
 
     }
     return src;
