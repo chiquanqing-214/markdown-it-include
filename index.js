@@ -50,9 +50,9 @@ module.exports = function include_plugin(md, options) {
     }
     return ret.join('');
   }
-  function appendBtn(mdSrc, url) {
+  function appendBtn(mdSrc, url, filePath) {
     return "> 文档编辑地址: [" + url + "](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/" + url
-      + ")\r\n \r\n \r\n \r\n" + mdSrc;
+      + ")\r\n \r\n " + filePath + "\r\n \r\n" + mdSrc;
   }
 
   function _replaceIncludeByContent(src, rootdir, parentFilePath, filesProcessed) {
@@ -83,7 +83,7 @@ module.exports = function include_plugin(md, options) {
         }
         mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
       }
-      src = src.slice(0, cap.index) + appendBtn(mdSrc, app.url, filePath,) + src.slice(cap.index + cap[0].length, src.length);
+      src = src.slice(0, cap.index) + appendBtn(mdSrc, app.url, filePath) + src.slice(cap.index + cap[0].length, src.length);
 
     }
     return src;
