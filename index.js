@@ -50,8 +50,9 @@ module.exports = function include_plugin(md, options) {
     }
     return ret.join('');
   }
-  function appendBtn(mdSrc, filePath) {
-    return "> CHIQ_SOS1:" + filePath + " \r\n" + mdSrc;
+  function appendBtn(mdSrc, url, filePath) {
+    return "> CHIQ_SOS1:" + url + " \r\n" + filePath +
+      "[下载](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/common/imintro/private.md)\r\n\r\n" + mdSrc;
   }
 
   function _replaceIncludeByContent(src, rootdir, parentFilePath, filesProcessed) {
@@ -82,7 +83,7 @@ module.exports = function include_plugin(md, options) {
         }
         mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
       }
-      src = src.slice(0, cap.index) + appendBtn(mdSrc, filePath) + src.slice(cap.index + cap[0].length, src.length);
+      src = src.slice(0, cap.index) + appendBtn(mdSrc, app.url, filePath,) + src.slice(cap.index + cap[0].length, src.length);
 
     }
     return src;
