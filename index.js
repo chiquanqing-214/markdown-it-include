@@ -50,9 +50,9 @@ module.exports = function include_plugin(md, options) {
     }
     return ret.join('');
   }
-  function appendBtn(mdSrc, url, filePath) {
-    return "> CHIQ_SOS1:" + url + " \r\n" + filePath +
-      "[下载](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/common/imintro/private.md)\r\n\r\n" + mdSrc;
+  function appendBtn(mdSrc, url) {
+    return "> 文档编辑地址: [" + url + "](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/" + url
+      + ")\r\n \r\n \r\n \r\n" + mdSrc;
   }
 
   function _replaceIncludeByContent(src, rootdir, parentFilePath, filesProcessed) {
