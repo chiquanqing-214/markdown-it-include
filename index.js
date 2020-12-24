@@ -50,11 +50,20 @@ module.exports = function include_plugin(md, options) {
     }
     return ret.join('');
   }
-  function appendBtn(mdSrc, rootdir, url, filePath) {
-    var str = "> 文档编辑地址: [" + url + "](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
-      + url + ")\r\n \r\n ";
-    str += "rootdir:" + rootdir + "\r\n \r\n";
-    str += "filePath:" + filePath + "\r\n \r\n";
+  function appendBtn(mdSrc, url, filePath) {
+    var ulength = url.split("/").length;
+    var filePathArray = filePath.split("/");
+    var path = "";
+    for (let i = filePathArray.length - ulength; i < filePathArray.length; i++) {
+      if (path == "") {
+        path = filePathArray[i];
+      } else {
+        path += "/" + filePathArray[i];
+      }
+    }
+    var str = "> 文档编辑地址: [" + path + "](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
+      + path + ")\r\n \r\n ";
+    // str += "filePath:" + filePath + "\r\n \r\n";
     return str + "\r\n \r\n" + mdSrc;
   }
 
@@ -86,7 +95,7 @@ module.exports = function include_plugin(md, options) {
         }
         mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
       }
-      src = src.slice(0, cap.index) + appendBtn(mdSrc, rootdir, app.url, filePath) + src.slice(cap.index + cap[0].length, src.length);
+      src = src.slice(0, cap.index) + appendBtn(mdSrc, app.url, filePath) + src.slice(cap.index + cap[0].length, src.length);
 
     }
     return src;
