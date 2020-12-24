@@ -52,7 +52,7 @@ module.exports = function include_plugin(md, options) {
   }
   function appendBtn(mdSrc, url, filePath) {
     return "> 文档编辑地址: [" + url + "](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/" + url
-      + ")\r\n \r\n " + filePath + "\r\n \r\n" + mdSrc;
+      + ")\r\n \r\n " + root + "\r\n \r\n" + filePath + "\r\n \r\n" + mdSrc;
   }
 
   function _replaceIncludeByContent(src, rootdir, parentFilePath, filesProcessed) {
