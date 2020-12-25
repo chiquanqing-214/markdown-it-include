@@ -61,11 +61,11 @@ module.exports = function include_plugin(md, options) {
         path += "/" + filePathArray[i];
       }
     }
-    var str = "\r\n---\r\n---\r\n---\r\n";
-    str += "::: danger 下方文档文件地址: " + path + "\r\n\r\n";
-    str += "[跳转到GitLab页面编辑此文档](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
-      + path + ")\r\n:::\r\n\r\n";
-    return str + mdSrc;
+    var str = "\r\n<div style='border-color: deepskyblue;  border-style: dotted;  padding: 10px; '>";
+    str += "<a class='btn_opengitlab' href='https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
+      + path + "' target='_blank' >编 辑 此 文 档</a>";
+    str += "\r\n---\r\n";
+    return str + mdSrc + "</div>";
   }
 
   function _replaceIncludeByContent(src, rootdir, parentFilePath, filesProcessed) {
