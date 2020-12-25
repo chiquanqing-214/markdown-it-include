@@ -61,7 +61,7 @@ module.exports = function include_plugin(md, options) {
         path += "/" + filePathArray[i];
       }
     }
-    var str = "[<span class='btn_opengitlab'>编 辑 此 文 档</span>](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
+    var str = "[编 辑 此 文 档](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
       + path + ")\r\n---\r\n";
     return str + mdSrc;
   }
