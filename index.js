@@ -61,8 +61,10 @@ module.exports = function include_plugin(md, options) {
         path += "/" + filePathArray[i];
       }
     }
-    var str = "[编 辑 此 文 档](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
+    var str = "\r\n---\r\n";
+    str += "[:arrow_down:编 辑 此 文 档:arrow_down:](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
       + path + ")\r\n---\r\n";
+
     return str + mdSrc;
   }
 
