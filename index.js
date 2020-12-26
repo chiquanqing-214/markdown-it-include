@@ -61,12 +61,10 @@ module.exports = function include_plugin(md, options) {
         path += "/" + filePathArray[i];
       }
     }
-    var str = "\r\n---\r\n---\r\n---\r\n";
+    var str = "\r\n\r\n";
     str += "::: danger 下方文档文件地址: " + path + "\r\n\r\n";
     str += "[跳转到GitLab页面编辑此文档](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
-      + path + ")\r\n:::\r\n\r\n";
-
-    str += ":tada: :tada: :tada: :tada: \r\n\r\n\r\n"
+      + path + ")\r\n:::\r\n---\r\n";
 
     return str + mdSrc;
   }
