@@ -66,7 +66,7 @@ module.exports = function include_plugin(md, options) {
     str += "::: tip \r\n\r\n";
     str += "::: warning 下方文档文件地址: " + path + "\r\n\r\n";
     str += "[跳转到GitLab页面编辑此文档](https://gitlab2.rongcloud.net/docs-team/developer-docs/-/blob/dev/"
-      + path + ")\r\n:::\r\n:::\r\n:::\r\n---\r\n";
+      + path + ")\r\n:::\r\n\r\n\r\n---\r\n";
 
     return str + mdSrc;
   }
